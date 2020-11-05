@@ -1,7 +1,7 @@
 name: Gitee repos mirror periodic job
 on:
   # 取消 push 的注释后，向本仓库推送代码即可开始 Gitee 同步
-  # push:
+  push:
   schedule:
     # 每天北京时间9点跑
     - cron:  '0 1 * * *'
@@ -32,5 +32,5 @@ jobs:
         # account_type: org
         # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
         # static_list: repo_name
-        black_list: 'eHualu'
+        black_list: 'eHualu,kubernetesAPI'
         # white_list: 'repo_name,repo_name2'
