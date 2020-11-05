@@ -32,5 +32,5 @@ jobs:
         # account_type: org
         # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
         # static_list: repo_name
-        black_list: 'eHualu,kubernetesAPI'
+        black_list: 'eHualu,kubernetesAPI,v2ray'
         # white_list: 'repo_name,repo_name2'
