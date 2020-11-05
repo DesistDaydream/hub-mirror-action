@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Cache phpdragon src repos
+      # 引用发行版的主要版本
+      uses: actions/cache@v1
+      with:
+        path: /home/runner/work/phpdragon/phpdragon-cache
+        key: ${{ runner.os }}-phpdragon-repos-cache
     - name: Mirror the Github organization repos to Gitee.
       uses: DesistDaydream/hub-mirror-action@main
       with:
@@ -21,7 +27,7 @@ jobs:
         # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
         dst_token:  ${{ secrets.GITEE_TOKEN }}
         # 指定目录cache
-        cache_path: /root/github/workspace/cache
+        # cache_path: /root/github/workspace/cache
         # 如果是组织，指定组织即可，默认为用户user
         # account_type: org
         # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
