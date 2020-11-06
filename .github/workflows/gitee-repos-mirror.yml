@@ -3,8 +3,8 @@ on:
   # 取消 push 的注释后，向本仓库推送代码即可开始 Gitee 同步
   # push:
   schedule:
-    # 每天北京时间9点跑
-    - cron:  '0 1 * * *'
+  # 每天北京时间9点跑
+  - cron: '* * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
