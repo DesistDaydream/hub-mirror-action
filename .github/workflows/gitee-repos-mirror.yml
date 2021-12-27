@@ -10,12 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Cache phpdragon src repos
-      # 引用发行版的主要版本
-      uses: actions/cache@v1
-      with:
-        path: /home/runner/work/phpdragon/phpdragon-cache
-        key: ${{ runner.os }}-phpdragon-repos-cache
     - name: Mirror the Github organization repos to Gitee.
       uses: Yikun/hub-mirror-action@master
       with:
