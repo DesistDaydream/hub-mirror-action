@@ -5,6 +5,7 @@ on:
   schedule:
   # 每天北京时间9点跑
   - cron: '0 0 1 * *'
+  # 可以在 GitHub 的 Action 页面手动触发工作流
   workflow_dispatch: {}
 jobs:
   build:
@@ -21,6 +22,7 @@ jobs:
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
         dst_token:  ${{ secrets.GITEE_TOKEN }}
+        # 使用 git push -f 强制覆盖目标仓库
         force_update: ture
         # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
         # static_list: repo_name
