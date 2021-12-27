@@ -16,7 +16,7 @@ jobs:
         path: /home/runner/work/phpdragon/phpdragon-cache
         key: ${{ runner.os }}-phpdragon-repos-cache
     - name: Mirror the Github organization repos to Gitee.
-      uses: DesistDaydream/hub-mirror-action@main
+      uses: Yikun/hub-mirror-action@master
       with:
         # 必选，需要同步的Github用户（源）
         src: github/DesistDaydream
