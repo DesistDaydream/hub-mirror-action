@@ -23,7 +23,7 @@ jobs:
           # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
           dst_token: ${{ secrets.GITEE_TOKEN }}
           # 使用 git push -f 强制覆盖目标仓库
-          force_update: ture
+          force_update: true
           # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
           # static_list: repo_name
           black_list: "v2ray,eHualu"
