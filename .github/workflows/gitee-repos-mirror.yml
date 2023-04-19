@@ -3,7 +3,7 @@ on:
   # 取消 push 的注释后，向本仓库推送代码即可开始 Gitee 同步
   # push:
   schedule:
-    # 每天北京时间9点跑
+    # 每月1号执行一次
     - cron: "0 0 1 * *"
   # 可以在 GitHub 的 Action 页面手动触发工作流
   workflow_dispatch: {}
