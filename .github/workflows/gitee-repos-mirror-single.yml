@@ -1,4 +1,4 @@
-name: Gitee repos mirror periodic job
+name: 单仓库同步
 on:
   # 取消 push 的注释后，向本仓库推送代码即可开始 Gitee 同步
   # push:
@@ -6,7 +6,12 @@ on:
     # 每月1号执行一次
     - cron: "0 0 1 * *"
   # 可以在 GitHub 的 Action 页面手动触发工作流
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: "仓库名称"
+        required: true
+        default: "cloud-native-apps"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,7 +30,7 @@ jobs:
           # 使用 git push -f 强制覆盖目标仓库
           force_update: true
           # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
-          # static_list: repo_name
-          black_list: "v2ray,eHualu,desistdaydream.github.io"
+          # black_list: "v2ray,eHualu,alist"
           # white_list: 'repo_name,repo_name2'
-          # 强制更新 Gitee 仓库
+          # 仅同步指定的仓库
+          static_list: ${{ github.event.inputs.repo_name }}
