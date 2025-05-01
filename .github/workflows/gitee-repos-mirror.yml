@@ -26,6 +26,7 @@ jobs:
           force_update: true
           # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
           # static_list: repo_name
-          black_list: "v2ray,eHualu,desistdaydream.github.io"
+          # Gitee 好像没法同步 Alist 的代码，可能是国内合规之类的原因？
+          black_list: "v2ray,eHualu,desistdaydream.github.io,node_exporter,alist"
           # white_list: 'repo_name,repo_name2'
           # 强制更新 Gitee 仓库
