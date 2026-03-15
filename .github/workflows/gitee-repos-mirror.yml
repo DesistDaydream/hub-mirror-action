@@ -1,4 +1,4 @@
-name: Gitee repos mirror periodic job
+name: GitHub 仓库同步到 Gitee
 on:
   # 取消 push 的注释后，向本仓库推送代码即可开始 Gitee 同步
   # push:
@@ -11,7 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Mirror the Github organization repos to Gitee.
+      - name: 获取不包含 fork 和 private 的仓库列表
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v1.1.1
+
+      - name: 将 GitHub 组织的仓库镜像至 Gitee。
         uses: Yikun/hub-mirror-action@master
         with:
           # 必选，需要同步的Github用户（源）
@@ -26,7 +30,9 @@ jobs:
           force_update: true
           # 还有黑、白名单，静态名单机制，可以用于更新某些指定库
           # static_list: repo_name
+          # 使用生成的仓库列表，排除 fork 和 private 仓库
+          static_list: ${{ steps.repo.outputs.repoList }}
           # Gitee 好像没法同步 Alist 的代码，可能是国内合规之类的原因？
-          black_list: "v2ray,eHualu,desistdaydream.github.io,node_exporter,alist"
+          black_list: "v2ray,eHualu,desistdaydream.github.io,node_exporter"
           # white_list: 'repo_name,repo_name2'
           # 强制更新 Gitee 仓库
